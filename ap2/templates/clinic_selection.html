@@ -1,0 +1,25 @@
+{%extend 'base.html'%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Selection</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}!</h1>
+   
+    <form method="post" action="{% url 'selected_clinic_data' %}">
+        {% csrf_token %}
+        <label for="clinic">Select Clinic:</label>
+        <select name="clinic" id="clinic">
+            {% for clinic in clinics %}
+                <option value="{{ clinic.id }}">{{ clinic.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">View Clinic Data</button>
+    </form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,20 @@
+{%extend 'base.html'%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ clinic.name }} Options</title>
+</head>
+<body>
+    <h1>Options for {{ clinic.name }}</h1>
+   
+    <ul>
+        <li><a href="{% url 'view_current_appointments' clinic.id %}">View Current Appointments</a></li>
+        <li><a href="{% url 'cancel_reservations' clinic.id %}">Cancel Reservations</a></li>
+        <li><a href="{% url 'increase_availability' clinic.id %}">Increase Availability</a></li>
+    </ul>
+</body>
+</html>
+{% endblock %}
